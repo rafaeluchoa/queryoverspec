@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{C0507117-511B-44DB-A2FA-E3A462CEB246}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0507117-511B-44DB-A2FA-E3A462CEB246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0507117-511B-44DB-A2FA-E3A462CEB246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0507117-511B-44DB-A2FA-E3A462CEB246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0507117-511B-44DB-A2FA-E3A462CEB246}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,102 @@
+<Configuration>
+  <UnitTestSessions>
+    <Session>
+      <Name>Session #1</Name>
+      <Elements>
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestFixtureElement" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec.TestAddFindAll" ParentId="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestElement" TypeName="Naskar.QueryOverSpec.Test.Tests.TestSpec" MethodName="TestAddFindAll" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec.TestQueryOverAsParameterAction" ParentId="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestElement" TypeName="Naskar.QueryOverSpec.Test.Tests.TestSpec" MethodName="TestQueryOverAsParameterAction" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec.TestQueryOverWith" ParentId="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestElement" TypeName="Naskar.QueryOverSpec.Test.Tests.TestSpec" MethodName="TestQueryOverWith" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec.TestSpecification" ParentId="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestElement" TypeName="Naskar.QueryOverSpec.Test.Tests.TestSpec" MethodName="TestSpecification" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec.TestSpecificationWith" ParentId="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestElement" TypeName="Naskar.QueryOverSpec.Test.Tests.TestSpec" MethodName="TestSpecificationWith" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec.TestSpecificationWithOr" ParentId="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestElement" TypeName="Naskar.QueryOverSpec.Test.Tests.TestSpec" MethodName="TestSpecificationWithOr" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+        <UnitTestElement Provider="nUnit" Id="Naskar.QueryOverSpec.Test.Tests.TestSpec.TestSpecificationWithOrUsandoCriterion" ParentId="Naskar.QueryOverSpec.Test.Tests.TestSpec" type="NUnitTestElement" TypeName="Naskar.QueryOverSpec.Test.Tests.TestSpec" MethodName="TestSpecificationWithOrUsandoCriterion" Project="C0507117-511B-44DB-A2FA-E3A462CEB246" />
+      </Elements>
+    </Session>
+  </UnitTestSessions>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/f:Entity.cs" caret="67" fromTop="2" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/f:QueryOverSpecification.cs" caret="18" fromTop="0" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/f:CriterionSpecification.cs" caret="460" fromTop="12" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Impl/f:IQueryOverSpecification.cs" caret="1032" fromTop="24" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Properties/f:AssemblyInfo.cs" caret="324" fromTop="7" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Properties/f:AssemblyInfo.cs" caret="24" fromTop="0" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/f:hibernate.cfg.xml" caret="467" fromTop="7" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/f:IByExampleSpec.cs" caret="395" fromTop="8" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Repository/f:Repository.cs" caret="0" fromTop="0" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Entities/f:Vote.cs" caret="70" fromTop="2" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Entities/f:Course.cs" caret="369" fromTop="15" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Entities/f:Instructor.cs" caret="88" fromTop="3" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Specs/f:CourseWithVotes.cs" caret="406" fromTop="11" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Specs/f:ICourseWithVotes.cs" caret="191" fromTop="10" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Mappings/f:CourseMap.cs" caret="124" fromTop="4" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Mappings/f:InstructorMap.cs" caret="128" fromTop="4" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Mappings/f:VoteMap.cs" caret="122" fromTop="4" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:DefaultUnityAwareContext.cs" caret="222" fromTop="9" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:UnityNHSessionFactory.cs" caret="581" fromTop="19" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Repository/f:IRepository.cs" caret="445" fromTop="14" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Mappings/f:EntityMap.cs" caret="305" fromTop="10" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:UnityFactory.cs" caret="1399" fromTop="32" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:ByExampleUnityAware.cs" caret="411" fromTop="14" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Impl/f:SpecificationBuilder.cs" caret="3792" fromTop="31" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="1106" fromTop="6" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:UnityFactory.cs" caret="436" fromTop="12" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="643" fromTop="18" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Mappings/f:CourseMap.cs" caret="124" fromTop="4" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Mappings/f:InstructorMap.cs" caret="128" fromTop="4" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Mappings/f:VoteMap.cs" caret="122" fromTop="4" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:UnityNHSessionFactory.cs" caret="556" fromTop="18" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:ByExampleUnityAware.cs" caret="787" fromTop="26" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:ByExampleUnityAware.cs" caret="607" fromTop="16" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:ByExampleUnityAware.cs" caret="37" fromTop="0" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Impl/f:SpecificationBuilder.cs" caret="480" fromTop="10" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Unity/f:ByExampleUnityAware.cs" caret="188" fromTop="8" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="832" fromTop="26" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="1565" fromTop="13" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="7949" fromTop="16" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="4158" fromTop="16" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="2773" fromTop="11" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="2412" fromTop="2" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="3342" fromTop="12" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Impl/f:SpecificationBuilder.cs" caret="3792" fromTop="32" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="3950" fromTop="13" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Impl/f:SpecificationBuilder.cs" caret="3792" fromTop="24" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Impl/f:SpecificationBuilder.cs" caret="480" fromTop="3" />
+      <File id="AFB60A8E-FECF-49E7-98C9-7FD46E64E2C7/d:Impl/f:SpecificationBuilder.cs" caret="3792" fromTop="31" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="3881" fromTop="10" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="7639" fromTop="14" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="711" fromTop="5" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="1299" fromTop="5" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="3036" fromTop="13" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="4779" fromTop="13" />
+      <File id="C0507117-511B-44DB-A2FA-E3A462CEB246/d:Tests/f:TestSpec.cs" caret="8251" fromTop="11" />
+    </RecentEdits>
+  </RecentFiles>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="string" priority="31" />
+      <Item value="Entity`0" priority="31" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+</Configuration>
