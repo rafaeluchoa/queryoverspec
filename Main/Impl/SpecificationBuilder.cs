@@ -23,7 +23,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// <param name="right">right.</param>
         /// <returns>uma specification que une as duas specifications.</returns>
         public static ISpecification<TEntity> And<TEntity>(this ISpecification<TEntity> left, ISpecification<TEntity> right)
-            where TEntity : Entity
+            where TEntity : class, IIdAccessor
         {
             return new AndSpecification<TEntity>(left, right);
         }
@@ -36,7 +36,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// <param name="expr">expression.</param>
         /// <returns>uma specification que une as duas specifications.</returns>
         public static ISpecification<TEntity> And<TEntity>(this ISpecification<TEntity> left, Expression<Func<TEntity, bool>> expr)
-            where TEntity : Entity
+            where TEntity : class, IIdAccessor
         {
             return new AndSpecification<TEntity>(left, new LambdaSpecification<TEntity>(expr));
         }
@@ -49,7 +49,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// <param name="criterion">criterion.</param>
         /// <returns>uma specification que une as duas specifications.</returns>
         public static ISpecification<TEntity> And<TEntity>(this ISpecification<TEntity> left, ICriterion criterion)
-            where TEntity : Entity
+            where TEntity : class, IIdAccessor
         {
             return new AndSpecification<TEntity>(left, new CriterionSpecification<TEntity>(criterion));
         }
@@ -62,7 +62,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// <param name="right">right.</param>
         /// <returns>uma specification que une as duas specifications.</returns>
         public static ISpecification<TEntity> Or<TEntity>(this ISpecification<TEntity> left, ISpecification<TEntity> right)
-            where TEntity : Entity
+            where TEntity : class, IIdAccessor
         {
             return new OrSpecification<TEntity>(left, right);
         }
@@ -75,8 +75,8 @@ namespace Naskar.QueryOverSpec.Impl
         /// <returns>uma specification que une as duas specifications.</returns>
         public static ISpecification<TEntity> With<TEntity, TEntityWith>(
             this ISpecification<TEntity> root, Expression<Func<TEntity, object>> path, ISpecification<TEntityWith> with)
-            where TEntity : Entity
-            where TEntityWith : Entity
+            where TEntity : class, IIdAccessor
+            where TEntityWith : class, IIdAccessor
         {
             return new WithSpecification<TEntity, TEntityWith>(root, path, with);
         }

@@ -16,7 +16,7 @@ namespace Naskar.QueryOverSpec
     /// </summary>
     /// <typeparam name="TEntity">tipo da entidade</typeparam>
     public class QueryOverSpecification<TEntity> : IQueryOverSpecification, ISpecification<TEntity>
-        where TEntity : Entity
+        where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// A action a ser executada sobre o queryover.

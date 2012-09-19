@@ -18,7 +18,7 @@ namespace Naskar.QueryOverSpec.Impl
     /// Adiciona cada query over para cada tipo de Specification.
     /// </summary>
     public class QueryOverSpecificationVisitor<TE> : ISpecificationVisitor 
-        where TE : Entity
+        where TE : IIdAccessor
     {
         /// <summary>
         /// QueryOver usando internamente para adicionar as specifications.
@@ -42,7 +42,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// <returns>
         /// ICriterion
         /// </returns>
-        public void Visit<TEntity>(AndSpecification<TEntity> specification) where TEntity : Entity
+        public void Visit<TEntity>(AndSpecification<TEntity> specification) where TEntity : class, IIdAccessor
         {
             var left = QueryOver.Of<TEntity>();
             specification.Left.Accept(new QueryOverSpecificationVisitor<TEntity>(left));
@@ -65,7 +65,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// </summary>
         /// <typeparam name="TEntity">tipo da entidade.</typeparam>
         /// <param name="specification">specification</param>
-        public void Visit<TEntity>(OrSpecification<TEntity> specification) where TEntity : Entity
+        public void Visit<TEntity>(OrSpecification<TEntity> specification) where TEntity : class, IIdAccessor
         {
             var left = QueryOver.Of<TEntity>();
             specification.Left.Accept(new QueryOverSpecificationVisitor<TEntity>(left));
@@ -90,8 +90,8 @@ namespace Naskar.QueryOverSpec.Impl
         /// <typeparam name="TEntityWith">tipo da entidade relacionada.</typeparam>
         /// <param name="specification">specification</param>
         public void Visit<TEntity, TEntityWith>(WithSpecification<TEntity, TEntityWith> specification) 
-            where TEntity : Entity 
-            where TEntityWith : Entity
+            where TEntity : class, IIdAccessor
+            where TEntityWith : class, IIdAccessor
         {
             specification.Root.Accept(this);
 
@@ -114,7 +114,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// <typeparam name="TEntity">tipo da entidade.</typeparam>
         /// <param name="specification">specification</param>
         public void Visit<TEntity>(IQueryOverSpecification specification) 
-            where TEntity : Entity
+            where TEntity : class, IIdAccessor
         {
             specification.Builder<TE, TE>(_queryOver);
         }

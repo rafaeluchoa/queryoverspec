@@ -17,14 +17,14 @@ namespace Naskar.QueryOverSpec.Impl
         /// </summary>
         /// <typeparam name="TEntity">tipo da entidade.</typeparam>
         /// <param name="specification">specification</param>
-        void Visit<TEntity>(AndSpecification<TEntity> specification) where TEntity : Entity;
+        void Visit<TEntity>(AndSpecification<TEntity> specification) where TEntity : class, IIdAccessor;
 
         /// <summary>
         /// Método visit para Specification.
         /// </summary>
         /// <typeparam name="TEntity">tipo da entidade.</typeparam>
         /// <param name="specification">specification</param>
-        void Visit<TEntity>(OrSpecification<TEntity> specification) where TEntity : Entity;
+        void Visit<TEntity>(OrSpecification<TEntity> specification) where TEntity : class, IIdAccessor;
 
         /// <summary>
         /// Método visit para Specification.
@@ -33,8 +33,8 @@ namespace Naskar.QueryOverSpec.Impl
         /// <typeparam name="TEntityWith">tipo da entidade.</typeparam>
         /// <param name="specification">specification</param>
         void Visit<TEntity, TEntityWith>(WithSpecification<TEntity, TEntityWith> specification) 
-            where TEntity : Entity
-            where TEntityWith : Entity;
+            where TEntity : class, IIdAccessor
+            where TEntityWith : class, IIdAccessor;
 
         /// <summary>
         /// Método visit para Specification.
@@ -42,6 +42,6 @@ namespace Naskar.QueryOverSpec.Impl
         /// <typeparam name="TEntity">tipo da entidade.</typeparam>
         /// <param name="specification">specification</param>
         void Visit<TEntity>(IQueryOverSpecification specification) 
-            where TEntity : Entity;
+            where TEntity : class, IIdAccessor;
     }
 }

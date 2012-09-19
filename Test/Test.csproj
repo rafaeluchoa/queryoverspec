@@ -82,12 +82,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Course.cs" />
+    <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Instructor.cs" />
     <Compile Include="Entities\Vote.cs" />
-    <Compile Include="Specs\CourseWithVotes.cs" />
-    <Compile Include="Specs\ICourseWithVotes.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Results\CourseDTO.cs" />
+    <Compile Include="Specs\CourseWithVotes.cs" />
+    <Compile Include="Specs\ICourseWithVotes.cs" />
     <Compile Include="Tests\TestSpec.cs" />
     <Compile Include="Mappings\CourseMap.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
@@ -119,6 +121,7 @@
       <Name>Main</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

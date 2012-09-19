@@ -12,7 +12,7 @@ namespace Naskar.QueryOverSpec.Extensions
     /// </summary>
     /// <typeparam name="TEntity">Type of entity that check this specification</typeparam>
     public abstract class BinaryCompositeSpecification<TEntity> : ISpecification<TEntity>
-         where TEntity : Entity
+         where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// Lado esquerdo da expressão binária.

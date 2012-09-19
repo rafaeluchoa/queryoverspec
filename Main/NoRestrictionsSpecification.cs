@@ -14,7 +14,7 @@ namespace Naskar.QueryOverSpec
     /// </summary>
     /// <typeparam name="TEntity">tipo da entidade.</typeparam>
     public class NoRestrictionsSpecification<TEntity> : IQueryOverSpecification, ISpecification<TEntity>
-        where TEntity : Entity
+        where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// Nao acrescenta nenhuma restrição.

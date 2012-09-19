@@ -12,7 +12,7 @@ namespace Naskar.QueryOverSpec
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
     public class ByExampleSpec<TEntity> : IByExampleSpec<TEntity>
-        where TEntity : Entity
+        where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// Cria uma Specification que consulta uma entidade usando Query By Example.
@@ -26,7 +26,7 @@ namespace Naskar.QueryOverSpec
             ISpecification<TEntity> spec = new NoRestrictionsSpecification<TEntity>();
             if (entity != null)
             {
-                if (entity.Id > 0)
+                if (entity.Id != null && entity.Id > 0)
                 {
                     spec = new LambdaSpecification<TEntity>(x => x.Id == entity.Id);
                 }

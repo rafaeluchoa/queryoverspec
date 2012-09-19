@@ -12,7 +12,7 @@ namespace Naskar.QueryOverSpec
     /// </summary>
     /// <typeparam name="TEntity">tipo da entidade</typeparam>
     public interface ISpecification<TEntity> 
-        where TEntity : Entity
+        where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// Método Accept do ISpecificationVisitor.

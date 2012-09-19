@@ -16,8 +16,8 @@ namespace Naskar.QueryOverSpec.Extensions
     /// <typeparam name="TEntity">tipo da entidade</typeparam>
     /// <typeparam name="TEntityWith">subtipo da entidade</typeparam>
     public sealed class WithSpecification<TEntity, TEntityWith> : ISpecification<TEntity>
-        where TEntity : Entity
-        where TEntityWith : Entity
+        where TEntity : class, IIdAccessor
+        where TEntityWith : class, IIdAccessor
     {
         /// <summary>
         /// Lado esquerdo da expressão binária.

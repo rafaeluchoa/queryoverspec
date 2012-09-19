@@ -10,7 +10,7 @@ namespace Naskar.QueryOverSpec
     /// </summary>
     /// <typeparam name="TEntity">tipo da entidade</typeparam>
     public interface IByExampleSpec<TEntity> 
-        where TEntity : Entity
+        where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// Cria uma Specification que consulta uma entidade usando Query By Example.

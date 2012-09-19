@@ -17,7 +17,7 @@ namespace Naskar.QueryOverSpec
     /// </summary>
     /// <typeparam name="TEntity">tipo da entidade.</typeparam>
     public class LambdaSpecification<TEntity> : IQueryOverSpecification, ISpecification<TEntity>
-        where TEntity : Entity
+        where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// Predicado filtro sobre uma entidade.

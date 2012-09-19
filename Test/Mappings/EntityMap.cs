@@ -2,7 +2,7 @@
 {
     using FluentNHibernate.Mapping;
 
-    public abstract class EntityMap<TEntity> : ClassMap<TEntity> where TEntity : Entity
+    public abstract class EntityMap<TEntity> : ClassMap<TEntity> where TEntity : class, IIdAccessor
     {
         protected EntityMap()
         {

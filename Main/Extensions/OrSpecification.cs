@@ -12,7 +12,7 @@ namespace Naskar.QueryOverSpec.Extensions
     /// </summary>
     /// <typeparam name="TEntity">tipo da entidade</typeparam>
     public sealed class OrSpecification<TEntity> : BinaryCompositeSpecification<TEntity>
-        where TEntity : Entity
+        where TEntity : class, IIdAccessor
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OrSpecification&lt;TEntity&gt;"/> class.

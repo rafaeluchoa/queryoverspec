@@ -3,7 +3,7 @@
 // Data de criação: 7/31/2012 09:00:00 AM
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naskar.QueryOverSpec.Impl
+namespace Naskar.QueryOverSpec
 {
     using System;
     using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace Naskar.QueryOverSpec.Impl
         /// <param name="predicate">filtro dentro da entidade da lista.</param>
         /// <returns>sempre retorna true, deve ser usando como uma extension com QueryOver.</returns>
         public static bool With<TEntity>(this IEnumerable<TEntity> entity, Func<TEntity, bool> predicate)
-            where TEntity : Entity
+            where TEntity : class, IIdAccessor
         {
             return true;
         }
@@ -40,9 +40,17 @@ namespace Naskar.QueryOverSpec.Impl
         /// <summary>
         /// Efetua o registro das extensions usadas no QueryOver.
         /// </summary>
-        internal static void RegisterQueryOverExtensions()
+        public static void RegisterQueryOverExtensions()
         {
-            ExpressionProcessor.RegisterCustomMethodCall(() => new List<Entity>().With(c => c != null), ProcessWith);
+            try
+            {
+                ExpressionProcessor.RegisterCustomMethodCall(
+                    () => new List<IIdAccessor>().With(c => c != null), ProcessWith);
+            }
+            catch
+            {
+                // Already registered
+            }
         }
 
         /// <summary>

@@ -8,20 +8,34 @@ namespace Naskar.QueryOverSpec.Test.Tests
     using Naskar.QueryOverSpec.Impl;
     using Naskar.QueryOverSpec.Test.Entities;
     using Naskar.QueryOverSpec.Test.Repository;
+    using Naskar.QueryOverSpec.Test.Results;
     using Naskar.QueryOverSpec.Test.Specs;
     using Naskar.QueryOverSpec.Test.Unity;
     using NHibernate.Criterion;
     using NUnit.Framework;
+
+    using RestrictionExtensions = Naskar.QueryOverSpec.RestrictionExtensions;
 
     [TestFixture]
     public class TestSpec
     {
         private UnityContainer _container;
 
+        private IRepository _repository;
+
         [TestFixtureSetUp]
         public void SetUp()
         {
             _container = new UnityFactory().Create("Naskar.QueryOverSpec");
+            _repository = _container.Resolve<IRepository>();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _repository.RemoveAll<Vote>();
+            _repository.RemoveAll<Instructor>();
+            _repository.RemoveAll<Course>();
         }
 
         [Test]
@@ -30,19 +44,15 @@ namespace Naskar.QueryOverSpec.Test.Tests
             // Arrange
             var course1 = new Course() { Name = "Java" };
             var course2 = new Course() { Name = "PHP" };
-
-            var repository = _container.Resolve<IRepository>();
-            repository.Add(course1);
-            repository.Add(course2);
+            
+            _repository.Add(course1);
+            _repository.Add(course2);
 
             // Act
-            var list = repository.Find<Course>();
+            var list = _repository.Find<Course>();
 
             // Assert
             list.Should().HaveCount(2);
-
-            // Cleanup
-            repository.RemoveAll<Course>();
         }
 
         [Test]
@@ -55,20 +65,40 @@ namespace Naskar.QueryOverSpec.Test.Tests
             var vote1 = new Vote() { Course = course1, Mail = "teste" };
             course1.Votes.Add(vote1);
 
-            var repository = _container.Resolve<IRepository>();
-            repository.Add(course1);
-            repository.Add(course2);
+            _repository.Add(course1);
+            _repository.Add(course2);
 
             // Act
             var list =
-                repository.Find<Vote>(
+                _repository.Find<Vote>(
                     x => x.JoinQueryOver(y => y.Course).Where(y => y.Name.IsInsensitiveLike("%java%")));
 
             // Assert
             list.Should().HaveCount(1);
+        }
 
-            // Cleanup
-            repository.RemoveAll<Course>();
+        [Test]
+        public void TestWithLambda()
+        {
+            // Arrange
+            var course1 = new Course() { Name = "Java" };
+            var course2 = new Course() { Name = "C#" };
+
+            var vote1 = new Vote() { Course = course1, Mail = "teste" };
+            course1.Votes.Add(vote1);
+
+            _repository.Add(course1);
+            _repository.Add(course2);
+
+            RestrictionExtensions.RegisterQueryOverExtensions();
+
+            // Act
+            var list =
+                _repository.Find<Course>(
+                    new LambdaSpecification<Course>(x => x.Votes.With(y => y.Mail.IsInsensitiveLike("te", MatchMode.Anywhere))));
+
+            // Assert
+            list.Should().HaveCount(1);
         }
 
         [Test]
@@ -84,20 +114,57 @@ namespace Naskar.QueryOverSpec.Test.Tests
             var courseByExample = _container.Resolve<IByExampleSpec<Course>>();
             var courseWithVotes = _container.Resolve<ICourseWithVotes>();
 
-            var repository = _container.Resolve<IRepository>();
-            repository.Add(course1);
-            repository.Add(course2);
+            _repository.Add(course1);
+            _repository.Add(course2);
 
             // Act
             var list =
-                repository.Find(courseWithVotes.By().And(courseByExample.By(new Course() { Name = "ava" })));
+                _repository.Find(courseWithVotes.By().And(courseByExample.By(new Course() { Name = "ava" })));
 
             // Assert
             list.Should().HaveCount(1);
-
-            // Cleanup
-            repository.RemoveAll<Course>();
         }
+
+        [Test]
+        public void TestUsingId()
+        {
+            // Arrange
+            var course1 = new Course() { Name = "Java" };
+            _repository.Add(course1);
+
+            var courseByExample = _container.Resolve<IByExampleSpec<Course>>();
+
+            // Act
+            var list =
+                _repository.Find(courseByExample.By(new Course() { Id = course1.Id }));
+
+            // Assert
+            list.Should().Contain(x => x.Id == course1.Id);
+        }
+
+        [Test]
+        public void TestSpecificationAndCriterion()
+        {
+            // Arrange
+            var course1 = new Course() { Name = "Java" };
+            var course2 = new Course() { Name = "PHP" };
+
+            var vote1 = new Vote() { Course = course1, Mail = "teste" };
+            course1.Votes.Add(vote1);
+
+            var courseWithVotes = _container.Resolve<ICourseWithVotes>();
+
+            _repository.Add(course1);
+            _repository.Add(course2);
+
+            // Act
+            var list =
+                _repository.Find(courseWithVotes.By().And(Example.Create(new Course() { Name = "Java" })));
+
+            // Assert
+            list.Should().HaveCount(1);
+        }
+
 
         [Test]
         public void TestQueryOverWith()
@@ -111,22 +178,18 @@ namespace Naskar.QueryOverSpec.Test.Tests
 
             var voteByExample = _container.Resolve<IByExampleSpec<Vote>>();
 
-            var repository = _container.Resolve<IRepository>();
-            repository.Add(course1);
-            repository.Add(course2);
+            _repository.Add(course1);
+            _repository.Add(course2);
 
             // Act
             var list =
-                repository.Find<Vote>(
+                _repository.Find<Vote>(
                     voteByExample.By().With(
                         y => y.Course, new LambdaSpecification<Course>(x => x.Name.IsInsensitiveLike("ava", MatchMode.Anywhere)))
                         .And(x => x.Mail.IsInsensitiveLike("tes", MatchMode.Anywhere)));
 
             // Assert
             list.Should().HaveCount(1);
-
-            // Cleanup
-            repository.RemoveAll<Course>();
         }
 
         [Test]
@@ -147,24 +210,20 @@ namespace Naskar.QueryOverSpec.Test.Tests
             var instructorByExample = _container.Resolve<IByExampleSpec<Instructor>>();
             var courseWithVotes = _container.Resolve<ICourseWithVotes>();
 
-            var repository = _container.Resolve<IRepository>();
-            repository.Add(instructor1);
-            repository.Add(instructor2);
-            repository.Add(course1);
-            repository.Add(course2);
+            _repository.Add(instructor1);
+            _repository.Add(instructor2);
+            _repository.Add(course1);
+            _repository.Add(course2);
 
             var instructorExample = new Instructor() { Name = "fulano" };
 
             // Act
             var list =
-                repository.Find(
+                _repository.Find(
                     courseWithVotes.By().With(x => x.Instructor, instructorByExample.By(instructorExample)));
 
             // Assert
             list.Should().HaveCount(1);
-
-            // Cleanup
-            repository.RemoveAll<Instructor>();
         }
 
         [Test]
@@ -184,16 +243,15 @@ namespace Naskar.QueryOverSpec.Test.Tests
 
             var byExamplcourseSpec = _container.Resolve<IByExampleSpec<Course>>();
 
-            var repository = _container.Resolve<IRepository>();
-            repository.Add(course1);
-            repository.Add(course2);
-            repository.Add(course3);
-            repository.Add(instructor1);
-            repository.Add(instructor2);
+            _repository.Add(course1);
+            _repository.Add(course2);
+            _repository.Add(course3);
+            _repository.Add(instructor1);
+            _repository.Add(instructor2);
 
             // Act
             var list =
-                repository.Find(
+                _repository.Find(
                     byExamplcourseSpec.By().With(
                         x => x.Instructor,
                         new LambdaSpecification<Instructor>(x => x.Name.IsInsensitiveLike("fulano", MatchMode.Anywhere)).Or(
@@ -201,9 +259,6 @@ namespace Naskar.QueryOverSpec.Test.Tests
 
             // Assert
             list.Should().HaveCount(2);
-
-            // Cleanup
-            repository.RemoveAll<Instructor>();
         }
 
         [Test]
@@ -223,25 +278,66 @@ namespace Naskar.QueryOverSpec.Test.Tests
 
             var courseByExample = _container.Resolve<IByExampleSpec<Course>>();
 
-            var repository = _container.Resolve<IRepository>();
-            repository.Add(course1);
-            repository.Add(course2);
-            repository.Add(course3);
-            repository.Add(instructor1);
-            repository.Add(instructor2);
+            _repository.Add(course1);
+            _repository.Add(course2);
+            _repository.Add(course3);
+            _repository.Add(instructor1);
+            _repository.Add(instructor2);
 
             // Act
             var list =
-                repository.Find(
+                _repository.Find(
                     courseByExample.By()
                         .With(x => x.Instructor, new LambdaSpecification<Instructor>(x => x.Name.IsInsensitiveLike("fulano", MatchMode.Anywhere))
                         .Or(new CriterionSpecification<Instructor>(Property.ForName("Name").Like("ciclano", MatchMode.Anywhere)))));
 
             // Assert
             list.Should().HaveCount(2);
+        }
 
-            // Cleanup
-            repository.RemoveAll<Instructor>();
+        [Test]
+        public void TestSpecificationWithTransformResult()
+        {
+            // Arrange
+            var course1 = new Course() { Name = "Java" };
+            var course2 = new Course() { Name = "PHP" };
+
+            var courseByExample = _container.Resolve<IByExampleSpec<Course>>();
+
+            _repository.Add(course1);
+            _repository.Add(course2);
+
+            // Act
+            var list = _repository.Find<Course, CourseDTO>(
+                courseByExample.By(new Course() { Name = "PH" }), x => x.Id, x => x.Name);
+
+            // Assert
+            list.Should().HaveCount(1);
+            list[0].Name.Should().NotBeNull().Equals(course1.Name);
+        }
+
+        [Test]
+        public void TestSpecificationWithTransformMapping()
+        {
+            // Arrange
+            var course1 = new Course() { Name = "Java" };
+            var course2 = new Course() { Name = "PHP" };
+
+            var courseByExample = _container.Resolve<IByExampleSpec<Course>>();
+
+            _repository.Add(course1);
+            _repository.Add(course2);
+
+            // Act
+            var list = _repository.Find(
+                courseByExample.By(new Course() { Name = "PH" }),
+                new Mapping<Course, CourseDTO>()
+                    .Add(x => x.Id, y => y.Id)
+                    .Add(x => x.Name, y => y.CompleteName));
+
+            // Assert
+            list.Should().HaveCount(1);
+            list[0].CompleteName.Should().NotBeNull().Equals(course1.Name);
         }
     }
 }
